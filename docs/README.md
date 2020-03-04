@@ -1,6 +1,7 @@
-#   Referensi   : https://github.com/nedssoft/sequelize-with-postgres-tutorial
+#   Referensi git   : http://www.inanzzz.com/index.php/post/cs32/working-with-git-release-branches
+#   Referensi       : https://github.com/nedssoft/sequelize-with-postgres-tutorial
 
-#   Content     : Sequelize setup, configuration, migration and seeding.
+#   Content         : Sequelize setup, configuration, migration and seeding.
 
 #   Requirement       
 #   -   install NodeJS
