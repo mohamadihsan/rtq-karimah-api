@@ -76,7 +76,7 @@ const login = async (req, res) => {
                     username_var: data.username_var,  
                     user_group_id: data.user_group_id,  
                     email_var: data.email_var
-                }, process.env.JWT_KEY, { expiresIn: '7d' });
+                }, process.env.JWT_KEY, {});
 
                 // jika user memilih remember me untuk data login nya
                 if (remember_boo === true) {
