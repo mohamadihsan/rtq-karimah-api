@@ -62,7 +62,7 @@ app.use(morgan('combined'));
 
 
 // Route API Mobile
-app.use('/api/v1/m-', authRoutesMobile);
+app.use('/api/v1/m/', authRoutesMobile);
 
 // Route API
 app.use('/', authIndex);

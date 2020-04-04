@@ -91,7 +91,7 @@ const login = async (req, res) => {
                 }
 
                 // data has been found
-                return res.status(200).json({ code: 0, message: 'Login is valid. Redirect to home page...', data: {token: token, role : role} });
+                return res.status(200).json({ code: 0, message: 'Login is valid. Redirect to home page...', data: {token: token, user_group: data.user_group_id, role : role} });
                 
             }else{
                 return res.status(200).send({ code: 1, message: "Please check your password!", data: null });
