@@ -15,10 +15,13 @@ const morgan        = require('morgan'); // add some logging capabilities
 const path          = require('path');
 const rfs           = require('rotating-file-stream'); // combined log file per day in /log
 
+// import route Mobile
+const authRoutesMobile      = require('./routes/mobile/auth');
+
 // import route
-const authIndex     = require('./routes/');
-const authRoutes    = require('./routes/auth');
-const roleManagementRoutes = require('./routes/role-management');
+const authIndex             = require('./routes/');
+const authRoutes            = require('./routes/auth');
+const roleManagementRoutes  = require('./routes/role-management');
 
 const app = express();
 
@@ -56,6 +59,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 // show log in terminal without write log into file
 app.use(morgan('combined'));
+
+
+// Route API Mobile
+app.use('/api/v1/m-', authRoutesMobile);
 
 // Route API
 app.use('/', authIndex);
