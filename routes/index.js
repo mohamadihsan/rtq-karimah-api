@@ -11,6 +11,6 @@ const { Router } = require('express');
 const router = Router();
 
 // default
-router.get('/', (req, res) => res.status(200).json({ author: 'Mohamad Ihsan', contact: 'mohamad_ihsan100@yahoo.co.id', company: 'PT.Nutech Integrasi', description: 'API untuk System Management' }));
+router.get('/', (req, res) => res.status(200).json({ author: 'Mohamad Ihsan', contact: 'mohamad_ihsan100@yahoo.co.id', company: 'KATAPANDA', description: 'API untuk System Management' }));
 
 module.exports = router;
