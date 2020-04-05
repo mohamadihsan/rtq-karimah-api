@@ -13,7 +13,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			},
 			{
 				// menu_id: 2,
@@ -26,7 +25,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			},
 			{
 				// menu_id: 3,
@@ -39,7 +37,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			},
 			{
 				// menu_id: 4,
@@ -52,7 +49,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			},
 			{
 				// menu_id: 5,
@@ -65,7 +61,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			},
 		],
 		{

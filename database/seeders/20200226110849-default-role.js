@@ -8,7 +8,6 @@ module.exports = {
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
-				updated_on_dtm: new Date(),
 			}
 		],
 		{

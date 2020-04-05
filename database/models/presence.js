@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
         description_var: {
             type: DataTypes.STRING(255),
-            allowNull: true
+            allowNull: false
         },
         active_status_boo: {
             type: DataTypes.BOOLEAN,
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, 
     { 
-        schema: 'master',
+        schema: 'public',
         tableName: 't_presence',
 		underscored: true
     });
@@ -54,7 +54,10 @@ module.exports = (sequelize, DataTypes) => {
 	
 	Presence.associate = function(models) {
 		// associations can be defined here
-
+		Presence.hasMany(models.UserSetting, {
+			foreignKey: 'presence_id',
+			onDelete: 'CASCADE'
+		});
 	};
 
 	return Presence;

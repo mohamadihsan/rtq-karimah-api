@@ -1,10 +1,10 @@
 module.exports = {
 	up: (queryInterface, Sequelize) => queryInterface.bulkInsert(
-		't_user_group',
+		't_user_setting',
 		[
 			{
-				user_group_id: 1,
-				user_group_name_var: 'administrator',
+				user_id: 1,
+				presence_id: 1,
 				active_status_boo: true,
 				created_by_int: 0,
 				created_on_dtm: new Date(),
@@ -15,6 +15,6 @@ module.exports = {
 		},
 	),
   
-	down: (queryInterface, Sequelize) => queryInterface.bulkDelete('t_user_group', null, { schema: 'public' }),
+	down: (queryInterface, Sequelize) => queryInterface.bulkDelete('t_user_setting', null, { schema: 'public' }),
   };
   

@@ -82,17 +82,20 @@ module.exports = (sequelize, DataTypes) => {
 	User.removeAttribute('updatedAt');
 	
 	User.associate = function(models) {
-		// associations can be defined here
+        // associations can be defined here
+        User.hasMany(models.UserSetting, {
+			foreignKey: 'user_id',
+			onDelete: 'CASCADE',
+        });
+        
 		User.belongsTo(models.UserGroup, {
 			foreignKey: 'user_group_id',
 			onDelete: 'CASCADE',
-			// as: 'user_id',
         });
         
         User.belongsTo(models.Employees, {
 			foreignKey: 'employee_id',
 			onDelete: 'CASCADE',
-			// as: 'menu_group_list',
 		});
 	};
 
