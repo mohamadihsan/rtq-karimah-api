@@ -47,7 +47,27 @@ const login = async (req, res) => {
                     x.user_group_id,
                     mg.menu_group_order_int,
                     x.menu_id`;
-
+            
+                // get employee detail berdasarkan user id login
+                let identity_number_var = null;
+                let fullname_var = null;
+                let nickname_var = null;
+                if (data.employee_id) {
+                    const employee = await models.Employees.findOne({ where: { employee_id: data.employee_id } });
+                    if (employee) {
+                        identity_number_var = employee.identity_number_var;
+                        fullname_var = employee.fullname_var;
+                        nickname_var = employee.nickname_var;
+                    }
+                }
+            
+                // get settingan absensi berdasarkan user id login
+                let presence_id = null;
+                const userSetting = await models.UserSetting.findOne({ where: { user_id: data.user_id } });
+                if (userSetting) {
+                    presence_id = userSetting.presence_id;
+                }
+                
                 // get role berdasarkan user group 
                 const roles = await models.sequelize.query(query, {
                     // bind id
@@ -91,7 +111,22 @@ const login = async (req, res) => {
                 }
 
                 // data has been found
-                return res.status(200).json({ code: 0, message: 'Login is valid. Redirect to home page...', data: {token: token, user_group: data.user_group_id, role : role} });
+                return res.status(200).json({ 
+                    code: 0, 
+                    message: 'Login is valid. Redirect to home page...', 
+                    data: {
+                        token: token, 
+                        user: {
+                            user_group: data.user_group_id,
+                            presence_status: presence_id,
+                            identity_number: identity_number_var,
+                            fullname: fullname_var,
+                            nickname: nickname_var, 
+                            email: data.email_var
+                        }, 
+                        role : role
+                    } 
+                });
                 
             }else{
                 return res.status(200).send({ code: 1, message: "Please check your password!", data: null });

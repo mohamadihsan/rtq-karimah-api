@@ -38,7 +38,11 @@ module.exports = (sequelize, DataTypes) => {
 		user_group_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false
-		},
+        },
+        employee_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         token_text: {
             type: DataTypes.TEXT,
             allowNull: true 
@@ -83,6 +87,12 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'user_group_id',
 			onDelete: 'CASCADE',
 			// as: 'user_id',
+        });
+        
+        User.belongsTo(models.Employees, {
+			foreignKey: 'employee_id',
+			onDelete: 'CASCADE',
+			// as: 'menu_group_list',
 		});
 	};
 
