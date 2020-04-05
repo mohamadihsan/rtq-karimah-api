@@ -42,3 +42,6 @@ VALUES(1, 1, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, N
 INSERT INTO public.t_user_setting
 (user_id, presence_id, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(2, 3, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, NULL, NULL);
+INSERT INTO public.t_user_setting
+(user_id, presence_id, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+VALUES(3, 2, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, NULL, NULL);

@@ -122,7 +122,24 @@ const login = async (req, res) => {
                             identity_number: identity_number_var,
                             fullname: fullname_var,
                             nickname: nickname_var, 
-                            email: data.email_var
+                            email: data.email_var,
+                            position: null
+                        },
+                        company: {
+                            name: "RTQ KARIMAH",
+                            location: [
+                                {
+                                    location_name: "Lokasi 1",
+                                    longitude: -6.460547,
+                                    latitude: 106.790738
+                                },
+                                {
+                                    location_name: "Lokasi 2",
+                                    longitude: -6.273499,
+                                    latitude: 106.855520
+                                },
+                            ],
+                            logo: null
                         }, 
                         role : role
                     } 
