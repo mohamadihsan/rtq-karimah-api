@@ -47,6 +47,10 @@ module.exports = {
 				type: Sequelize.INTEGER,
 				allowNull: true 
 			},  
+			phone_number_var: {
+				type: Sequelize.STRING(30),
+				allowNull: true 
+			},
 			place_of_birth_var: {
 				type: Sequelize.STRING(50),
 				allowNull: true 

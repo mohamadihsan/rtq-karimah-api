@@ -81,12 +81,9 @@ module.exports = (sequelize, DataTypes) => {
 	Menu.removeAttribute('updatedAt');
 	
 	Menu.associate = function(models) {
-		// associations can be defined here
-
-		Menu.belongsTo(models.UserGroup, {
+		Menu.belongsTo(models.MenuGroup, {
 			foreignKey: 'menu_group_id',
 			onDelete: 'CASCADE',
-			// as: 'menu_group_list',
 		});
 	};
 

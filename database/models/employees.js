@@ -54,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true 
 		},  
+        phone_number_var: {
+            type: DataTypes.STRING(30),
+            allowNull: true 
+        },
         place_of_birth_var: {
             type: DataTypes.STRING(50),
             allowNull: true 
@@ -125,12 +129,15 @@ module.exports = (sequelize, DataTypes) => {
 	Employees.removeAttribute('updatedAt');
 	
 	Employees.associate = function(models) {
-		// associations can be defined here
-		// Menu.belongsTo(models.User, {
-		// 	foreignKey: 'user_id',
-		// 	onDelete: 'RESTRICT',
-		// 	// as: 'menu_group_list',
-		// });
+		Employees.hasMany(models.User, {
+			foreignKey: 'employee_id',
+			onDelete: 'RESTRICT',
+        });
+
+        Employees.belongsTo(models.Company, {
+			foreignKey: 'company_id',
+			onDelete: 'RESTRICT',
+		});
 	};
 
 	return Employees;

@@ -1,23 +1,27 @@
 /**
  * @author [Mohamad Ihsan]
  * @email [ihsan.nutech@gmail.com]
- * @create date 2020-04-05 13:36:02
- * @modify date 2020-04-05 13:36:02
+ * @create date 2020-04-06 21:52:23
+ * @modify date 2020-04-06 21:52:23
  * @desc [ Model ]
  */
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-	const Presence = sequelize.define('Presence', {
-        presence_id: {
-            type: DataTypes.BIGINT,
+	const Position = sequelize.define('Position', {
+		position_id: {
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-		},
-        description_var: {
-            type: DataTypes.STRING(255),
-            allowNull: false
         },
+        position_name_var: {
+            type: DataTypes.STRING(100),
+            allowNull: false 
+        },
+		level_order_int: {
+			allowNull: true,
+			type: DataTypes.INTEGER
+		},
         active_status_boo: {
             type: DataTypes.BOOLEAN,
             allowNull: false 
@@ -44,20 +48,21 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     { 
         schema: 'public',
-        tableName: 't_presence',
+        tableName: 't_position',
 		underscored: true
     });
 
-    Presence.removeAttribute('id');
-    Presence.removeAttribute('createdAt');
-	Presence.removeAttribute('updatedAt');
+    Position.removeAttribute('id');
+    Position.removeAttribute('createdAt');
+	Position.removeAttribute('updatedAt');
 	
-	Presence.associate = function(models) {
-		Presence.hasMany(models.UserSetting, {
-			foreignKey: 'presence_id',
-			onDelete: 'CASCADE'
+
+	Position.associate = function(models) {
+		Position.hasMany(models.Employees, {
+			foreignKey: 'position_id',
+			onDelete: 'CASCADE',
 		});
 	};
 
-	return Presence;
+	return Position;
 };

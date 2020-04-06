@@ -1,22 +1,22 @@
 /**
  * @author [Mohamad Ihsan]
  * @email [ihsan.nutech@gmail.com]
- * @create date 2020-04-05 13:36:02
- * @modify date 2020-04-05 13:36:02
+ * @create date 2020-04-06 21:52:23
+ * @modify date 2020-04-06 21:52:23
  * @desc [ Model ]
  */
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-	const Presence = sequelize.define('Presence', {
-        presence_id: {
-            type: DataTypes.BIGINT,
+	const Gender = sequelize.define('Gender', {
+		gender_id: {
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-		},
-        description_var: {
-            type: DataTypes.STRING(255),
-            allowNull: false
+        },
+        gender_name_var: {
+            type: DataTypes.STRING(100),
+            allowNull: false 
         },
         active_status_boo: {
             type: DataTypes.BOOLEAN,
@@ -44,20 +44,21 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     { 
         schema: 'public',
-        tableName: 't_presence',
+        tableName: 't_gender',
 		underscored: true
     });
 
-    Presence.removeAttribute('id');
-    Presence.removeAttribute('createdAt');
-	Presence.removeAttribute('updatedAt');
+    Gender.removeAttribute('id');
+    Gender.removeAttribute('createdAt');
+	Gender.removeAttribute('updatedAt');
 	
-	Presence.associate = function(models) {
-		Presence.hasMany(models.UserSetting, {
-			foreignKey: 'presence_id',
-			onDelete: 'CASCADE'
+
+	Gender.associate = function(models) {
+		Gender.hasMany(models.Employees, {
+			foreignKey: 'gender_id',
+			onDelete: 'CASCADE',
 		});
 	};
 
-	return Presence;
+	return Gender;
 };

@@ -52,17 +52,14 @@ module.exports = (sequelize, DataTypes) => {
 	UserSetting.removeAttribute('updatedAt');
 	
 	UserSetting.associate = function(models) {
-		// associations can be defined here
 		UserSetting.belongsTo(models.User, {
 			foreignKey: 'user_id',
 			onDelete: 'CASCADE',
-			// as: 'userSetting_id',
         });
 
         UserSetting.belongsTo(models.Presence, {
 			foreignKey: 'presence_id',
 			onDelete: 'CASCADE',
-			// as: 'userSetting_id',
         });
 	};
 

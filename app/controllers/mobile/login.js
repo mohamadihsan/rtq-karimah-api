@@ -20,9 +20,78 @@ const login = async (req, res) => {
         if (data) {
             // cek password
             if (Hash.comparePassword(password_var, data.password_var)) {
+            
+                // get employee detail berdasarkan user id login
+                let identity_number_var = null;
+                let fullname_var = null;
+                let nickname_var = null;
+                let gender_name_var = null;
+                let company_name_var = null;
+                let position_name_var = null;
+                let logo_var = null;
+                let location = [];
 
+                if (data.employee_id) {
+                    // const employee = await models.Employees.findOne({ where: { employee_id: data.employee_id } });
+                    let query = `select
+                        te.employee_id,
+                        te.identity_number_var,
+                        te.fullname_var,
+                        te.nickname_var,
+                        tc.company_id,
+                        tc.company_name_var,
+                        tc.logo_var,
+                        tp.position_name_var,
+                        tg.gender_name_var
+                    from
+                        master.t_employees te
+                    left join master.t_company tc on
+                        tc.company_id = te.company_id
+                    left join public.t_position tp on
+                        tp.position_id = te.position_id
+                    left join public.t_gender tg on
+                        tg.gender_id = te.gender_id
+                    where
+                        te.employee_id = (:employee_id)`;
+
+                    const employee = await models.sequelize.query(query, {
+                        // bind id
+                        replacements: {employee_id: data.employee_id},
+                        plain: false,
+                        raw: false,
+                        type: models.sequelize.QueryTypes.SELECT
+                    });
+
+                    if (employee) {
+                        
+                    // console.log('CCCCCCCCCCCCC: '+employee[0].company_id)
+                        location = await models.Location.findAll({ 
+                            attributes: ['location_name_var', 'country_name_var', 'city_name_var', 'longitude', 'latitude'],
+                            where: { 
+                                company_id: employee[0].company_id, 
+                                active_status_boo: true
+                            } 
+                        });
+
+                        identity_number_var = employee[0].identity_number_var;
+                        fullname_var = employee[0].fullname_var;
+                        nickname_var = employee[0].nickname_var;
+                        gender_name_var = employee[0].gender_name_var;
+                        company_name_var = employee[0].company_name_var;
+                        position_name_var = employee[0].position_name_var;
+                        logo_var = employee[0].logo_var;
+                    }
+                }
+            
+                // get settingan absensi berdasarkan user id login
+                let presence_id = null;
+                const userSetting = await models.UserSetting.findOne({ where: { user_id: data.user_id } });
+                if (userSetting) {
+                    presence_id = userSetting.presence_id;
+                }
+                
                 // query get role
-                const query = `select
+                let query = `select
                     mg.menu_group_name_var,
                     x.menu_id, 
                     m.menu_name_var, 
@@ -47,27 +116,7 @@ const login = async (req, res) => {
                     x.user_group_id,
                     mg.menu_group_order_int,
                     x.menu_id`;
-            
-                // get employee detail berdasarkan user id login
-                let identity_number_var = null;
-                let fullname_var = null;
-                let nickname_var = null;
-                if (data.employee_id) {
-                    const employee = await models.Employees.findOne({ where: { employee_id: data.employee_id } });
-                    if (employee) {
-                        identity_number_var = employee.identity_number_var;
-                        fullname_var = employee.fullname_var;
-                        nickname_var = employee.nickname_var;
-                    }
-                }
-            
-                // get settingan absensi berdasarkan user id login
-                let presence_id = null;
-                const userSetting = await models.UserSetting.findOne({ where: { user_id: data.user_id } });
-                if (userSetting) {
-                    presence_id = userSetting.presence_id;
-                }
-                
+
                 // get role berdasarkan user group 
                 const roles = await models.sequelize.query(query, {
                     // bind id
@@ -121,25 +170,15 @@ const login = async (req, res) => {
                             presence_status: presence_id,
                             identity_number: identity_number_var,
                             fullname: fullname_var,
-                            nickname: nickname_var, 
+                            nickname: nickname_var,
+                            gender: gender_name_var, 
                             email: data.email_var,
-                            position: null
+                            position: position_name_var
                         },
                         company: {
-                            name: "RTQ KARIMAH",
-                            location: [
-                                {
-                                    location_name: "Lokasi 1",
-                                    longitude: -6.91180130,
-                                    latitude: 107.70194810
-                                },
-                                {
-                                    location_name: "Lokasi 2",
-                                    longitude: -6.460547,
-                                    latitude: 106.790738
-                                },
-                            ],
-                            logo: null
+                            name: company_name_var,
+                            location: location,
+                            logo: logo_var
                         }, 
                         role : role
                     } 

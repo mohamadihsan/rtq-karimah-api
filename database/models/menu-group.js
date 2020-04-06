@@ -58,11 +58,9 @@ module.exports = (sequelize, DataTypes) => {
 	
 
 	MenuGroup.associate = function(models) {
-		// associations can be defined here
 		MenuGroup.hasMany(models.Menu, {
 			foreignKey: 'menu_group_id',
 			onDelete: 'CASCADE',
-			// as: 'menu_group_list',
 		});
 	};
 
