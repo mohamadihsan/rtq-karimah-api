@@ -14,17 +14,17 @@ const groupArray    = require('group-array')
 // login
 const login = async (req, res) => {
 	try {
-		const { username_var, password_var, remember_boo, device_id_var } = req.body;
+		const { username_var, password_var, remember_boo } = req.body;
         const data = await models.User.findOne({ where: { username_var: username_var } });
 
         if (data) {
             // cek password
             if (Hash.comparePassword(password_var, data.password_var)) {
             
-                // insert device id to user
                 try {
                     
-                    await models.User.update(device_id_var, {
+                    // insert or update device id to user
+                    await models.User.update({device_id_var: req.body.device_id_var}, {
                         where: { user_id: data.user_id }
                     });
                     
@@ -33,7 +33,7 @@ const login = async (req, res) => {
                     return res.status(200).json({ code: 1, message: `${error.message}`, data: null });
                 }
 
-                // get employee detail berdasarkan user id login
+                // init
                 let identity_number_var = null;
                 let fullname_var = null;
                 let nickname_var = null;
@@ -45,6 +45,7 @@ const login = async (req, res) => {
 
                 if (data.employee_id) {
                     
+                    // get employee detail berdasarkan user id login
                     let query = `select
                         te.employee_id,
                         te.identity_number_var,
@@ -76,6 +77,7 @@ const login = async (req, res) => {
 
                     if (employee) {
                         
+                        // get location berdasarkan data lembaga / perusahaan 
                         location = await models.Location.findAll({ 
                             attributes: ['location_name_var', 'country_name_var', 'city_name_var', 'longitude', 'latitude'],
                             where: { 
@@ -84,6 +86,7 @@ const login = async (req, res) => {
                             } 
                         });
 
+                        // bind data
                         identity_number_var = employee[0].identity_number_var;
                         fullname_var = employee[0].fullname_var;
                         nickname_var = employee[0].nickname_var;
