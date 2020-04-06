@@ -25,6 +25,10 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.INTEGER
 			},
+			device_id_var: {
+				type: Sequelize.STRING(255),
+				allowNull: true
+			},
 			token_text: {
 				allowNull: true,
 				type: Sequelize.TEXT

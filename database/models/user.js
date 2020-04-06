@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        device_id_var: {
+            type: DataTypes.STRING(255),
+            allowNull: true
+        },
         token_text: {
             type: DataTypes.TEXT,
             allowNull: true 

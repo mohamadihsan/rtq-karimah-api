@@ -4,10 +4,10 @@ VALUES(1, 'Rumah Tahfidz Quran Karimah', NULL, NULL, NULL, NULL, NULL, NULL, NUL
 
 
 INSERT INTO master.t_location
-(location_id, company_id, location_name_var, country_name_var, city_name_var, address_text, longitude, latitude_float, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+(location_id, company_id, location_name_var, country_name_var, city_name_var, address_text, longitude, latitude, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(1, 1, 'Rumah Irfan', 'Indonesia', 'Bandung', 'Ujung Berung Rumah Irfan', -6.9118013, 107.7019481, true, '2020-04-06 22:18:04.874', 0, '2020-04-06 22:18:04.000', 0, NULL, NULL);
 INSERT INTO master.t_location
-(location_id, company_id, location_name_var, country_name_var, city_name_var, address_text, longitude, latitude_float, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+(location_id, company_id, location_name_var, country_name_var, city_name_var, address_text, longitude, latitude, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(2, 1, 'RTQ Karimah', 'Indonesia', 'Bogor', 'Komplek Pesona Citayam Blok B 11 A no.12, Susukan, Kec. Bojong Gede, Bogor, Jawa Barat 16920', -6.460605, 106.790792, true, '2020-04-06 22:18:04.874', 0, '2020-04-06 22:18:04.000', 0, NULL, NULL);
 
 

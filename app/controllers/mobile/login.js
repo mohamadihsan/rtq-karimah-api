@@ -21,6 +21,18 @@ const login = async (req, res) => {
             // cek password
             if (Hash.comparePassword(password_var, data.password_var)) {
             
+                // insert device id to user
+                try {
+                    
+                    await models.User.update(device_id_var, {
+                        where: { user_id: data.user_id }
+                    });
+                    
+                } catch (error) {
+                    // error message
+                    return res.status(200).json({ code: 1, message: `${error.message}`, data: null });
+                }
+
                 // get employee detail berdasarkan user id login
                 let identity_number_var = null;
                 let fullname_var = null;
@@ -32,7 +44,7 @@ const login = async (req, res) => {
                 let location = [];
 
                 if (data.employee_id) {
-                    // const employee = await models.Employees.findOne({ where: { employee_id: data.employee_id } });
+                    
                     let query = `select
                         te.employee_id,
                         te.identity_number_var,
@@ -64,7 +76,6 @@ const login = async (req, res) => {
 
                     if (employee) {
                         
-                    // console.log('CCCCCCCCCCCCC: '+employee[0].company_id)
                         location = await models.Location.findAll({ 
                             attributes: ['location_name_var', 'country_name_var', 'city_name_var', 'longitude', 'latitude'],
                             where: { 
