@@ -14,7 +14,7 @@ const groupArray    = require('group-array')
 // login
 const login = async (req, res) => {
 	try {
-		const { username_var, password_var, remember_boo } = req.body;
+		const { username_var, password_var, remember_boo, device_id_var } = req.body;
         const data = await models.User.findOne({ where: { username_var: username_var } });
 
         if (data) {
@@ -130,13 +130,13 @@ const login = async (req, res) => {
                             location: [
                                 {
                                     location_name: "Lokasi 1",
-                                    longitude: -6.460547,
-                                    latitude: 106.790738
+                                    longitude: -6.91180130,
+                                    latitude: 107.70194810
                                 },
                                 {
                                     location_name: "Lokasi 2",
-                                    longitude: -6.273499,
-                                    latitude: 106.855520
+                                    longitude: -6.460547,
+                                    latitude: 106.790738
                                 },
                             ],
                             logo: null
