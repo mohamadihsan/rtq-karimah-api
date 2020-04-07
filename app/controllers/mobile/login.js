@@ -21,17 +21,17 @@ const login = async (req, res) => {
             // cek password
             if (Hash.comparePassword(password_var, data.password_var)) {
             
-                try {
+                // try {
                     
-                    // insert or update device id to user
-                    await models.User.update({device_id_var: req.body.device_id_var}, {
-                        where: { user_id: data.user_id }
-                    });
+                //     // insert or update device id to user
+                //     await models.User.update({device_id_var: req.body.device_id_var}, {
+                //         where: { user_id: data.user_id }
+                //     });
                     
-                } catch (error) {
-                    // error message
-                    return res.status(200).json({ code: 1, message: `${error.message}`, data: null });
-                }
+                // } catch (error) {
+                //     // error message
+                //     return res.status(200).json({ code: 1, message: `${error.message}`, data: null });
+                // }
 
                 // init
                 let identity_number_var = null;
