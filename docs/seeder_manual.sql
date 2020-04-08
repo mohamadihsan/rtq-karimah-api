@@ -57,6 +57,9 @@ VALUES(1, '20200504', 'Irfan Rangga Gumilar', 'Irfan', 1, 1, NULL, NULL, NULL, N
 INSERT INTO master.t_employees
 (employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(2, '20200505', 'Mohamad Ihsan', 'Ihsan', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
+INSERT INTO master.t_employees
+(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+VALUES(3, '20200506', 'Julio Febryanto', 'Julio', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
 
 
 INSERT INTO public.t_presence
@@ -87,6 +90,9 @@ VALUES(2, 'irfan', '$2a$08$VRfehKWEn7FQv4oK/QodaeAlmcD8E7sbXt71CjCBZQh4SyCXRrX3C
 INSERT INTO public.t_user
 (user_id, username_var, password_var, email_var, user_group_id, employee_id, token_text, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(3, 'ihsan', '$2a$08$VRfehKWEn7FQv4oK/QodaeAlmcD8E7sbXt71CjCBZQh4SyCXRrX3C', 'mohamad_ihsan100@yahoo.co_id', 2, 2, NULL, true, '2020-03-04 08:46:59.161', 0, '2020-03-04 08:46:59.161', NULL, NULL, NULL);
+INSERT INTO public.t_user
+(user_id, username_var, password_var, email_var, user_group_id, employee_id, token_text, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+VALUES(4, 'julio', '$2a$08$VRfehKWEn7FQv4oK/QodaeAlmcD8E7sbXt71CjCBZQh4SyCXRrX3C', 'julio@yahoo.co_id', 2, 3, NULL, true, '2020-03-04 08:46:59.161', 0, '2020-03-04 08:46:59.161', NULL, NULL, NULL);
 
 
 INSERT INTO public.t_user_setting
@@ -98,3 +104,6 @@ VALUES(2, 3, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, N
 INSERT INTO public.t_user_setting
 (user_id, presence_id, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
 VALUES(3, 2, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, NULL, NULL);
+INSERT INTO public.t_user_setting
+(user_id, presence_id, active_status_boo, created_on_dtm, created_by_int, updated_on_dtm, updated_by_int, deleted_on_dtm, deleted_by_int)
+VALUES(4, 1, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, NULL, NULL);
