@@ -24,7 +24,7 @@ const login = async (req, res) => {
                 try {
                     
                     // insert or update device id to user
-                    $query = `UPDATE t_user SET device_id_var = (:device_id_var) WHERE user_id = (:user_id)`
+                    let query = `UPDATE t_user SET device_id_var = (:device_id_var) WHERE user_id = (:user_id)`
                     let update = await models.sequelize.query(query, {
                         // bind id
                         replacements: {device_id_var: req.body.device_id_var, user_id: data.user_id},
