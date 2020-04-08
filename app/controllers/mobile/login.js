@@ -12,7 +12,7 @@ const models        = require("../../../database/models");
 const groupArray    = require('group-array')
 
 // login
-const login = async (req, res) => {
+const login = async (req, res, next) => {
 	try {
 		const { username_var, password_var, remember_boo } = req.body;
         const data = await models.User.findOne({ where: { username_var: username_var } });
