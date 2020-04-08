@@ -24,20 +24,20 @@ const login = async (req, res) => {
                 try {
                     
                     // insert or update device id to user
-                    let query = `UPDATE t_user SET device_id_var = (:device_id_var) WHERE user_id = (:user_id)`
-                    let update = await models.sequelize.query(query, {
-                        // bind id
-                        replacements: {device_id_var: req.body.device_id_var, user_id: data.user_id},
-                        type: models.sequelize.QueryTypes.INSERT
-                    });
-
-                    // await models.User.update({device_id_var: req.body.device_id_var}, {
-                    //     where: { user_id: data.user_id }
+                    // let query = `UPDATE t_user SET device_id_var = (:device_id_var) WHERE user_id = (:user_id)`
+                    // await models.sequelize.query(query, {
+                    //     replacements: {device_id_var: req.body.device_id_var, user_id: data.user_id},
+                    //     type: models.sequelize.QueryTypes.INSERT
                     // });
+
+                    await models.User.update({device_id_var: req.body.device_id_var}, {
+                        where: { user_id: data.user_id }
+                    });
                     
                 } catch (error) {
                     // error message
-                    return res.status(200).json({ code: 99, message: `${error.message}`, data: null });
+                    // return res.status(200).json({ code: 1, message: `${error.message}`, data: null });
+                    next()
                 }
 
                 // init
