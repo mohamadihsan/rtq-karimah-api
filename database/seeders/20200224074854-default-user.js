@@ -9,8 +9,8 @@ module.exports = {
 				email_var: 'mohamad_ihsan100@yahoo.co.id',
 				user_group_id: 1,
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			}
 		],
 		{

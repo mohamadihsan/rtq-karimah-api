@@ -12,7 +12,7 @@ const models        = require("../../../database/models");
 const groupArray    = require('group-array')
 
 // login
-const login = async (req, res, next) => {
+const login = async (req, res) => {
 	try {
 		const { username_var, password_var, remember_boo } = req.body;
         const data = await models.User.findOne({ where: { username_var: username_var } });
@@ -29,6 +29,11 @@ const login = async (req, res, next) => {
                         replacements: {device_id_var: req.body.device_id_var, user_id: data.user_id},
                         type: models.sequelize.QueryTypes.INSERT
                     });
+
+                    // note : di server ga jalan menggunakan cara ini
+                    // await models.User.update({device_id_var: req.body.device_id_var}, {
+                    //     where: { user_id: data.user_id }
+                    // });
                     
                 } catch (error) {
                     // error message

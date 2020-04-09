@@ -1,22 +1,26 @@
 /**
  * @author [Mohamad Ihsan]
  * @email [ihsan.nutech@gmail.com]
- * @create date 2020-04-05 13:36:02
- * @modify date 2020-04-05 13:36:02
+ * @create date 2020-04-06 21:52:23
+ * @modify date 2020-04-06 21:52:23
  * @desc [ Model ]
  */
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-	const Presence = sequelize.define('Presence', {
-        presence_id: {
-            type: DataTypes.BIGINT,
+	const AttendanceType = sequelize.define('AttendanceType', {
+		attendance_type_id: {
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-		},
-        description_var: {
-            type: DataTypes.STRING(255),
-            allowNull: false
+        },
+        attendance_type_code_var: {
+            type: DataTypes.STRING(5),
+            allowNull: false 
+        },
+        attendance_type_name_var: {
+            type: DataTypes.STRING(100),
+            allowNull: false 
         },
         active_status_boo: {
             type: DataTypes.BOOLEAN,
@@ -49,20 +53,21 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     { 
         schema: 'public',
-        tableName: 't_presence',
+        tableName: 't_attendance_type',
 		underscored: true
     });
 
-    Presence.removeAttribute('id');
-    // Presence.removeAttribute('createdAt');
-	// Presence.removeAttribute('updatedAt');
+    AttendanceType.removeAttribute('id');
+    // AttendanceType.removeAttribute('createdAt');
+	// AttendanceType.removeAttribute('updatedAt');
 	
-	Presence.associate = function(models) {
-		Presence.hasMany(models.UserSetting, {
-			foreignKey: 'presence_id',
-			onDelete: 'CASCADE'
+
+	AttendanceType.associate = function(models) {
+		AttendanceType.hasMany(models.AttendanceList, {
+			foreignKey: 'attendance_type_id',
+			onDelete: 'CASCADE',
 		});
 	};
 
-	return Presence;
+	return AttendanceType;
 };

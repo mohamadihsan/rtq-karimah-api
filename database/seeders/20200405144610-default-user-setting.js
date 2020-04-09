@@ -6,8 +6,8 @@ module.exports = {
 				user_id: 1,
 				presence_id: 1,
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			}
 		],
 		{

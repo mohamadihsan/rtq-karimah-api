@@ -6,8 +6,8 @@ module.exports = {
 				user_group_id: 1,
 				user_group_name_var: 'administrator',
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			}
 		],
 		{

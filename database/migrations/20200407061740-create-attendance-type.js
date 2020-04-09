@@ -1,21 +1,24 @@
 'use strict';
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('t_presence', {
-			presence_id: {
+		return queryInterface.createTable('t_attendance_type', {
+			attendance_type_id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			description_var: {
-				allowNull: false,
-				type: Sequelize.STRING(50)
+			attendance_type_code_var: {
+				type: Sequelize.STRING(5),
+				allowNull: false 
+			},
+			attendance_type_name_var: {
+				type: Sequelize.STRING(100),
+				allowNull: false 
 			},
 			active_status_boo: {
-				allowNull: false,
 				type: Sequelize.BOOLEAN,
-				defaultValue: false
+				allowNull: false 
 			},
 			createdAt: {
 				type: Sequelize.DATE,
@@ -47,12 +50,12 @@ module.exports = {
 			uniqueKeys: {
 				actions_unique:
 				{
-					fields: ['description_var']
+					fields: ['attendance_type_code_var']
 				}
 			}
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable('t_presence', { schema: 'public' });
+		return queryInterface.dropTable('t_attendance_type', { schema: 'public' });
 	}
 };

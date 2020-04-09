@@ -22,31 +22,30 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false
 		},
-		created_on_dtm: {
-			allowNull: false,
-			type: DataTypes.DATE,
-			defaultValue: DataTypes.NOW
-		},
-		created_by_int: {
-			allowNull: true,
-			type: DataTypes.BIGINT
-		},
-		updated_on_dtm: {
-			allowNull: true,
-			type: DataTypes.DATE
-		},
-		updated_by_int: {
-			allowNull: true,
-			type: DataTypes.BIGINT
-		},
-		deleted_on_dtm: {
-			allowNull: true,
-			type: DataTypes.DATE
-		},
-		deleted_by_int: {
-			allowNull: true,
-			type: DataTypes.BIGINT
-		}
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true 
+        },
+        createdBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
+        },
+        deletedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deletedBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
+        }
 	}, 
 	{ 
         schema: 'public',
@@ -55,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Role.removeAttribute('id');
-    Role.removeAttribute('createdAt');
-	Role.removeAttribute('updatedAt');
+    // Role.removeAttribute('createdAt');
+	// Role.removeAttribute('updatedAt');
 
 	Role.associate = function(models) {
 		// associations can be defined here

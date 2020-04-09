@@ -7,8 +7,8 @@ module.exports = {
 				menu_group_name_var: 'role management',
 				menu_group_order_int: null,
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			}
 		],
 		{

@@ -21,24 +21,29 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false 
         },
-        created_on_dtm: {
+        createdAt: {
             type: DataTypes.DATE,
-            allowNull: false 
+            allowNull: true 
         },
-        created_by_int: {
-            type: DataTypes.BIGINT
+        createdBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
         },
-        updated_on_dtm: {
-            type: DataTypes.DATE
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
         },
-        updated_by_int: {
-            type: DataTypes.BIGINT
+        updatedBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
         },
-        deleted_on_dtm: {
-            type: DataTypes.DATE
+        deletedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
         },
-        deleted_by_int: {
-            type: DataTypes.BIGINT
+        deletedBy: {
+            type: DataTypes.BIGINT,
+            allowNull: true
         }
     }, 
     { 
@@ -48,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     UserSetting.removeAttribute('id');
-    UserSetting.removeAttribute('createdAt');
-	UserSetting.removeAttribute('updatedAt');
+    // UserSetting.removeAttribute('createdAt');
+	// UserSetting.removeAttribute('updatedAt');
 	
 	UserSetting.associate = function(models) {
 		UserSetting.belongsTo(models.User, {

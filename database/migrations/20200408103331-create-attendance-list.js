@@ -1,31 +1,36 @@
 'use strict';
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('t_location', {
-			location_id: {
-				type: Sequelize.INTEGER,
+		return queryInterface.createTable('t_attendance_list', {
+			attendance_list_id: {
+				allowNull: false,
+				autoIncrement: true,
 				primaryKey: true,
-				autoIncrement: true
+				type: Sequelize.INTEGER
+			},
+			attendance_type_id: {
+				type: Sequelize.INTEGER,
+				allowNull: false 
+			},
+			presence_id: {
+				type: Sequelize.INTEGER,
+				allowNull: true 
+			},
+			mechine_id: {
+				type: Sequelize.INTEGER,
+				allowNull: true 
+			},
+			employee_id: {
+				type: Sequelize.INTEGER,
+				allowNull: true 
 			},
 			company_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false 
+				allowNull: true 
 			},
 			location_name_var: {
 				type: Sequelize.STRING(150),
-				allowNull: false 
-			},
-			country_name_var: {
-				type: Sequelize.STRING(100),
 				allowNull: true 
-			},
-			city_name_var: {
-				type: Sequelize.STRING(150),
-				allowNull: true 
-			},
-			address_text: {
-				allowNull: true,
-				type: Sequelize.TEXT
 			},
 			longitude: {
 				allowNull: true,
@@ -34,6 +39,10 @@ module.exports = {
 			latitude: {
 				allowNull: true,
 				type: Sequelize.DOUBLE
+			},
+			image_var: {
+				type: Sequelize.STRING(255),
+				allowNull: true 
 			},
 			active_status_boo: {
 				type: Sequelize.BOOLEAN,
@@ -65,10 +74,10 @@ module.exports = {
 			}
 		}, 
 		{
-			schema: 'master'
+			schema: 'transaction'
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable('t_location', { schema: 'master' });
+		return queryInterface.dropTable('t_attendance_list', { schema: 'transaction' });
 	}
 };

@@ -91,24 +91,29 @@ module.exports = {
 				type: Sequelize.BOOLEAN,
 				allowNull: false 
 			},
-			created_on_dtm: {
+			createdAt: {
 				type: Sequelize.DATE,
-				allowNull: false 
+				allowNull: true 
 			},
-			created_by_int: {
-				type: Sequelize.BIGINT
+			createdBy: {
+				type: Sequelize.BIGINT,
+				allowNull: true
 			},
-			updated_on_dtm: {
-				type: Sequelize.DATE
+			updatedAt: {
+				type: Sequelize.DATE,
+				allowNull: true
 			},
-			updated_by_int: {
-				type: Sequelize.BIGINT
+			updatedBy: {
+				type: Sequelize.BIGINT,
+				allowNull: true
 			},
-			deleted_on_dtm: {
-				type: Sequelize.DATE
+			deletedAt: {
+				type: Sequelize.DATE,
+				allowNull: true
 			},
-			deleted_by_int: {
-				type: Sequelize.BIGINT
+			deletedBy: {
+				type: Sequelize.BIGINT,
+				allowNull: true
 			}
 		}, 
 		{

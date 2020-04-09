@@ -6,15 +6,15 @@ module.exports = {
 				gender_id: 1,
 				gender_name_var: 'laki-laki',
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			},
 			{
 				gender_id: 2,
 				gender_name_var: 'perempuan',
 				active_status_boo: true,
-				created_by_int: 0,
-				created_on_dtm: new Date(),
+				createdBy: 0,
+				createdAt: new Date(),
 			}
 		],
 		{
