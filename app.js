@@ -16,7 +16,8 @@ const path          = require('path');
 const rfs           = require('rotating-file-stream'); // combined log file per day in /log
 
 // import route Mobile
-const authRoutesMobile      = require('./routes/mobile/auth');
+const authRoutesMobile              = require('./routes/mobile/auth');
+const authRoutesMobileTransaction   = require('./routes/mobile/transaction');
 
 // import route
 const authIndex             = require('./routes/');
@@ -63,6 +64,7 @@ app.use(morgan('combined'));
 
 // Route API Mobile
 app.use('/api/v1/m/', authRoutesMobile);
+app.use('/api/v1/m/', authRoutesMobileTransaction);
 
 // Route API
 app.use('/', authIndex);
