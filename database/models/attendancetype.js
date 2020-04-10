@@ -10,13 +10,9 @@
 module.exports = (sequelize, DataTypes) => {
 	const AttendanceType = sequelize.define('AttendanceType', {
 		attendance_type_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(2),
             primaryKey: true,
-            autoIncrement: true
-        },
-        attendance_type_code_var: {
-            type: DataTypes.STRING(5),
-            allowNull: false 
+            autoIncrement: false
         },
         attendance_type_name_var: {
             type: DataTypes.STRING(100),

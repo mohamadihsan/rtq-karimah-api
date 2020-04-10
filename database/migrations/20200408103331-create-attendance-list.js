@@ -9,7 +9,7 @@ module.exports = {
 				type: Sequelize.INTEGER
 			},
 			attendance_type_id: {
-				type: Sequelize.INTEGER,
+				type: Sequelize.STRING(2),
 				allowNull: false 
 			},
 			presence_id: {

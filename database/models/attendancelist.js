@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
 		},
 		attendance_type_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(2),
             allowNull: false 
 		},
 		presence_id: {

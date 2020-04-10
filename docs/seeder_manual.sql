@@ -110,8 +110,8 @@ VALUES(4, 1, true, '2020-04-05 14:42:58.000', 0, '2020-04-05 14:42:58.000', 0, N
 
 
 INSERT INTO public.t_attendance_type
-(attendance_type_id, attendance_type_code_var, attendance_type_name_var, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(1, '0', 'Absen Masuk', true, '2020-04-09 20:23:45.559', 0, NULL, NULL, NULL, NULL);
+(attendance_type_id, attendance_type_name_var, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
+VALUES('0', 'Absen Masuk', true, '2020-04-09 20:23:45.559', 0, NULL, NULL, NULL, NULL);
 INSERT INTO public.t_attendance_type
-(attendance_type_id, attendance_type_code_var, attendance_type_name_var, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(2, '1', 'Absen Pulang', true, '2020-04-09 20:23:45.559', 0, NULL, NULL, NULL, NULL);
+(attendance_type_id, attendance_type_name_var, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
+VALUES('1', 'Absen Pulang', true, '2020-04-09 20:23:45.559', 0, NULL, NULL, NULL, NULL);

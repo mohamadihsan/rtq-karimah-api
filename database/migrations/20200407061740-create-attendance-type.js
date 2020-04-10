@@ -4,13 +4,9 @@ module.exports = {
 		return queryInterface.createTable('t_attendance_type', {
 			attendance_type_id: {
 				allowNull: false,
-				autoIncrement: true,
+				autoIncrement: false,
 				primaryKey: true,
-				type: Sequelize.INTEGER
-			},
-			attendance_type_code_var: {
-				type: Sequelize.STRING(5),
-				allowNull: false 
+				type: Sequelize.STRING(2)
 			},
 			attendance_type_name_var: {
 				type: Sequelize.STRING(100),
