@@ -2,7 +2,7 @@
  * @author [Mohamad Ihsan]
  * @email [ihsan.nutech@gmail.com]
  * @create date 2020-04-06 21:52:23
- * @modify date 2020-04-10 12:19:26
+ * @modify date 2020-04-10 12:24:35
  * @desc [ Model ]
  */
 
