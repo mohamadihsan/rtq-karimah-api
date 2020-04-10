@@ -1,29 +1,29 @@
 /**
  * @author [Mohamad Ihsan]
  * @email [ihsan.nutech@gmail.com]
- * @create date 2020-04-06 21:52:23
- * @modify date 2020-04-10 12:19:26
+ * @create date -04-10 12:06:46
+ * @modify date 2020-04-10 12:06:46
  * @desc [ Model ]
  */
 
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-	const Position = sequelize.define('Position', {
-		position_id: {
+	const Department = sequelize.define('Department', {
+		department_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        position_name_var: {
+		department_code_var: {
+			type: DataTypes.STRING(10),
+			allowNull: true 
+		},
+        department_name_var: {
             type: DataTypes.STRING(100),
             allowNull: false 
         },
-		level_order_int: {
-			allowNull: true,
-			type: DataTypes.INTEGER
-		},
-        department_id: {
-            type: DataTypes.INTEGER,
+        description_var: {
+            type: DataTypes.STRING(255),
             allowNull: true 
         },
         active_status_boo: {
@@ -57,26 +57,21 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     { 
         schema: 'public',
-        tableName: 't_position',
+        tableName: 't_department',
 		underscored: true
     });
 
-    Position.removeAttribute('id');
-    // Position.removeAttribute('createdAt');
-	// Position.removeAttribute('updatedAt');
+    Department.removeAttribute('id');
+    // Department.removeAttribute('createdAt');
+	// Department.removeAttribute('updatedAt');
 	
 
-	Position.associate = function(models) {
-		Position.hasMany(models.Employees, {
-			foreignKey: 'position_id',
-			onDelete: 'CASCADE',
-        });
-        
-        Position.belongsTo(models.Department, {
+	Department.associate = function(models) {
+		Department.hasMany(models.Position, {
 			foreignKey: 'department_id',
-			onDelete: 'RESTRICT',
+			onDelete: 'CASCADE',
 		});
 	};
 
-	return Position;
+	return Department;
 };
