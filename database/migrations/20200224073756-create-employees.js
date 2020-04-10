@@ -87,6 +87,10 @@ module.exports = {
 				type: Sequelize.DATE,
 				allowNull: true 
 			},
+			shift_status_boo: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false 
+			},
 			active_status_boo: {
 				type: Sequelize.BOOLEAN,
 				allowNull: false 

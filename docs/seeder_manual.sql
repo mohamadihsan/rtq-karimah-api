@@ -52,14 +52,14 @@ VALUES(10, 'Musyrifah', 5, true, '2020-04-06 22:09:47.412', 0, NULL, NULL, NULL,
 
 
 INSERT INTO master.t_employees
-(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(1, '20200504', 'Irfan Rangga Gumilar', 'Irfan', 1, 1, NULL, NULL, NULL, NULL, 1, 6, NULL, NULL, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
+(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, shift_status_boo, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
+VALUES(1, '20200504', 'Irfan Rangga Gumilar', 'Irfan', 1, 1, NULL, NULL, NULL, NULL, 1, 6, NULL, NULL, false, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
 INSERT INTO master.t_employees
-(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(2, '20200505', 'Mohamad Ihsan', 'Ihsan', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
+(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, shift_status_boo, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
+VALUES(2, '20200505', 'Mohamad Ihsan', 'Ihsan', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, true, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
 INSERT INTO master.t_employees
-(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(3, '20200506', 'Julio Febryanto', 'Julio', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
+(employee_id, identity_number_var, fullname_var, nickname_var, gender_id, place_of_birth_var, date_of_birth_on_dtm, address_var, religion_id, marital_status_id, company_id, position_id, employment_status_id, join_date_on_dtm, shift_status_boo, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
+VALUES(3, '20200506', 'Julio Febryanto', 'Julio', 1, 1, NULL, NULL, NULL, NULL, 1, 7, NULL, NULL, false, true, '2020-04-05 14:39:27.676', 0, '2020-04-05 14:39:27.000', 0, NULL, NULL);
 
 
 INSERT INTO public.t_presence

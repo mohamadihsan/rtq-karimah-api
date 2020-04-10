@@ -94,6 +94,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true 
 		},
+        shift_status_boo: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false 
+        },
         active_status_boo: {
             type: DataTypes.BOOLEAN,
             allowNull: false 
