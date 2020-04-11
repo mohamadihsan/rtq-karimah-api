@@ -18,6 +18,7 @@ const router = Router();
 // isAuthenticated menandakan bahwa url harus disertakan dengan token
 
 // action
-router.post('/attendance/new', isAuthenticated, controllerAttendance.saveAttendanceList);
+router.post('/attendance/validate', isAuthenticated, controllerAttendance.validateAttendanceList);
+router.post('/attendance/new', isAuthenticated, controllerAttendance.validate('newAttendanceList'), controllerAttendance.newAttendanceList);
 
 module.exports = router;
