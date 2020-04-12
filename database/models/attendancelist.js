@@ -49,7 +49,15 @@ module.exports = (sequelize, DataTypes) => {
         image_var: {
             type: DataTypes.STRING(255),
             allowNull: true 
-		},
+        },
+        started_time: {
+            type: DataTypes.DATE,
+            allowNull: false 
+        },
+        finished_time: {
+            type: DataTypes.DATE,
+            allowNull: true 
+        },
         active_status_boo: {
             type: DataTypes.BOOLEAN,
             allowNull: false 

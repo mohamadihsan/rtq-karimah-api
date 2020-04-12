@@ -49,8 +49,8 @@ const validateAttendanceList = async (req, res) => {
 					when te.shift_status_boo is false then
 						(select 
 							case 
-								when tal.updated_at is not null and tal.attendance_list_id is not null then 0
-								when tal.updated_at is null and tal.attendance_list_id is not null then 1
+								when tal.finished_time is not null and tal.attendance_list_id is not null then 0
+								when tal.finished_time is null and tal.attendance_list_id is not null then 1
 								else -1
 							end attendance_type_id
 							from transaction.t_attendance_list tal
@@ -62,8 +62,8 @@ const validateAttendanceList = async (req, res) => {
 					when te.shift_status_boo is true then
 						(select 
 							case 
-								when tal.updated_at is not null and tal.attendance_list_id is not null then 0
-								when tal.updated_at is null and tal.attendance_list_id is not null then 1
+								when tal.finished_time is not null and tal.attendance_list_id is not null then 0
+								when tal.finished_time is null and tal.attendance_list_id is not null then 1
 								else -1
 							end attendance_type_id	
 							from transaction.t_attendance_list tal
@@ -154,9 +154,9 @@ const newAttendanceList = async(req, res) => {
 		let active_status_boo 	= true 
 		let createdAt 			= moment() 
 		let createdBy 			= req.body.employee_id
-		let updatedAt 			= null 
 		let cross_day_boo 		= req.body.cross_day_boo 
-		
+		let started_time		= moment()
+
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
 			return res.status(200).json({ code: 1, message: 'Invalid Parameter Request', errorForDevelopement: errors.array(), data: {} });
@@ -177,7 +177,7 @@ const newAttendanceList = async(req, res) => {
 				active_status_boo,
 				createdAt,
 				createdBy,
-				updatedAt
+				started_time
 			});
 			
 			if(data){
@@ -203,7 +203,7 @@ const newAttendanceList = async(req, res) => {
 			FROM transaction.t_attendance_list 
 			WHERE 
 				employee_id = (:employee_id)
-				and updated_at is null
+				and finished_time is null
 				and created_at::DATE = (:created_at)`;
 
 			const findData = await models.sequelize.query(query, {
@@ -220,13 +220,15 @@ const newAttendanceList = async(req, res) => {
 			if (findData.length) {
 				
 				// bind data 
-				let updatedAt = moment() 
-				let updatedBy = req.body.employee_id 
+				let updatedAt 		= moment() 
+				let updatedBy 		= req.body.employee_id 
+				let finished_time 	= moment() 
 
 				// success create new data (absen pulang)
 				const data = await models.AttendanceList.update({
 					updatedAt,
-					updatedBy
+					updatedBy,
+					finished_time
 				},
 				{
 					where: { attendance_list_id: findData[0].attendance_list_id }
