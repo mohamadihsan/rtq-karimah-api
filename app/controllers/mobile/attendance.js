@@ -147,6 +147,7 @@ const newAttendanceList = async(req, res) => {
 		let presence_id 		= req.body.presence_id 
 		let employee_id 		= req.body.employee_id 
 		let company_id 			= req.body.company_id 
+		let location_id 		= req.body.location_id 
 		let location_name_var 	= req.body.location_name_var 
 		let longitude 			= req.body.longitude 
 		let latitude 			= req.body.latitude 
@@ -170,6 +171,7 @@ const newAttendanceList = async(req, res) => {
 				presence_id,
 				employee_id,
 				company_id,
+				location_id,
 				location_name_var,
 				longitude,
 				latitude,
