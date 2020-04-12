@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true 
 		},
+		location_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true 
+		},
         location_name_var: {
             type: DataTypes.STRING(150),
             allowNull: true 
@@ -115,6 +119,11 @@ module.exports = (sequelize, DataTypes) => {
 
 		AttendanceList.belongsTo(models.Company, {
 			foreignKey: 'company_id',
+			onDelete: 'RESTRICT',
+        });
+        
+		AttendanceList.belongsTo(models.Location, {
+			foreignKey: 'location_id',
 			onDelete: 'RESTRICT',
 		});
 	};

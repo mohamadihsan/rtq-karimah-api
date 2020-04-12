@@ -20,5 +20,6 @@ const router = Router();
 // action
 router.post('/attendance/validate', isAuthenticated, controllerAttendance.validateAttendanceList);
 router.post('/attendance/new', isAuthenticated, controllerAttendance.validate('newAttendanceList'), controllerAttendance.newAttendanceList);
+router.get('/attendance/history', isAuthenticated, controllerAttendance.historyAttendanceList);
 
 module.exports = router;

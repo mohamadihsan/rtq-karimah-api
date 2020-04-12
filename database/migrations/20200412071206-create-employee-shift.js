@@ -1,60 +1,48 @@
 'use strict';
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('t_attendance_list', {
-			attendance_list_id: {
+		return queryInterface.createTable('t_employee_shift', {
+			employee_shift_id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			attendance_type_id: {
-				type: Sequelize.STRING(2),
-				allowNull: false 
-			},
-			presence_id: {
-				type: Sequelize.INTEGER,
-				allowNull: true 
-			},
-			mechine_id: {
-				type: Sequelize.INTEGER,
+			qr_code_var: {
+				type: Sequelize.STRING(255),
 				allowNull: true 
 			},
 			employee_id: {
 				type: Sequelize.INTEGER,
-				allowNull: true 
-			},
-			company_id: {
-				type: Sequelize.INTEGER,
-				allowNull: true 
-			},
-			location_id: {
-				type: Sequelize.INTEGER,
-				allowNull: true 
-			},
-			location_name_var: {
-				type: Sequelize.STRING(150),
-				allowNull: true 
-			},
-			longitude: {
-				allowNull: true,
-				type: Sequelize.DOUBLE
-			},
-			latitude: {
-				allowNull: true,
-				type: Sequelize.DOUBLE
-			},
-			image_var: {
-				type: Sequelize.STRING(255),
-				allowNull: true 
+				allowNull: false 
 			},
 			started_time: {
 				type: Sequelize.DATE,
-				allowNull: false 
+				allowNull: true 
 			},
 			finished_time: {
 				type: Sequelize.DATE,
 				allowNull: true 
+			},
+			description_var: {
+				type: Sequelize.STRING(255),
+				allowNull: true 
+			},
+			approved_at: {
+				type: Sequelize.DATE,
+				allowNull: true 
+			},
+			approved_by: {
+				type: Sequelize.BIGINT,
+				allowNull: true
+			},
+			rejected_at: {
+				type: Sequelize.DATE,
+				allowNull: true 
+			},
+			rejected_by: {
+				type: Sequelize.BIGINT,
+				allowNull: true
 			},
 			active_status_boo: {
 				type: Sequelize.BOOLEAN,
@@ -86,10 +74,10 @@ module.exports = {
 			}
 		}, 
 		{
-			schema: 'transaction'
+			schema: 'master'
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable('t_attendance_list', { schema: 'transaction' });
+		return queryInterface.dropTable('t_employee_shift', { schema: 'master' });
 	}
 };

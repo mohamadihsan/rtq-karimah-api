@@ -252,8 +252,82 @@ const newAttendanceList = async(req, res) => {
 
 }
 
+const historyAttendanceList = async (req, res) => {
+
+	try {
+
+		// get user from token request
+		let user_id = req.decoded.user_id
+		const findEmployee = await models.User.findOne({
+			where: { 
+				user_id: user_id				
+			}
+		});
+
+		if (findEmployee) {
+			
+			// get history by user
+			let query = `select
+				case 
+					when atl.finished_time is not null then 
+						(select tat.attendance_type_name_var || ' - ' || tat2.attendance_type_name_var 
+							from public.t_attendance_type tat2 
+							where 
+								tat2.attendance_type_id = '1' 
+								and tat2.active_status_boo is true
+						)
+					else tat.attendance_type_name_var || ' - Belum Konfirmasi'
+				end attendance_type_name_var, 
+				atl.started_time,
+				atl.finished_time, 
+				tp.description_var,
+				te.nickname_var,
+				tc.company_name_var,
+				tl.location_name_var, 
+				atl.image_var
+			from
+				transaction.t_attendance_list atl
+			left join public.t_attendance_type tat on tat.attendance_type_id = atl.attendance_type_id 
+			left join public.t_presence tp on tp.presence_id = atl.presence_id 
+			left join master.t_employees te on te.employee_id = atl.employee_id 
+			left join master.t_company tc on tc.company_id = atl.company_id
+			left join master.t_location tl on tl.location_id = atl.location_id 
+			where
+				atl.employee_id = (:employee_id)
+				and atl.active_status_boo is true
+			order by
+				atl.started_time desc`;
+
+			const getHistory = await models.sequelize.query(query, {
+				// bind id
+				replacements: {
+					employee_id: findEmployee.employee_id
+				},
+				plain: false,
+				raw: false,
+				type: models.sequelize.QueryTypes.SELECT
+			});
+
+			if (getHistory.length) {
+				
+				return res.status(200).json({ code: 0, message: 'Attendance history found...', data: getHistory });
+
+			}
+
+		}
+		
+		return res.status(200).json({ code: 1, message: 'No attendance history...', data: {} });
+
+	} catch (error) {
+		// error message
+		return res.status(200).json({ code: 1, message: `${error.message}`, data: {} });
+	}
+
+}
+
 module.exports = {
 	validate,
 	validateAttendanceList,
-	newAttendanceList
+	newAttendanceList,
+	historyAttendanceList
 }

@@ -86,7 +86,7 @@ const login = async (req, res) => {
                         
                         // get location berdasarkan data lembaga / perusahaan 
                         location = await models.Location.findAll({ 
-                            attributes: ['location_name_var', 'country_name_var', 'city_name_var', 'longitude', 'latitude'],
+                            attributes: ['location_id', 'location_name_var', 'country_name_var', 'city_name_var', 'longitude', 'latitude'],
                             where: { 
                                 company_id: employee[0].company_id, 
                                 active_status_boo: true
