@@ -153,7 +153,8 @@ const newAttendanceList = async(req, res) => {
 		let image_var 			= req.body.image_var 
 		let active_status_boo 	= true 
 		let createdAt 			= moment() 
-		let createdBy 			= req.body.employee_id 
+		let createdBy 			= req.body.employee_id
+		let updatedAt 			= null 
 		let cross_day_boo 		= req.body.cross_day_boo 
 		
 		const errors = validationResult(req)
@@ -175,7 +176,8 @@ const newAttendanceList = async(req, res) => {
 				image_var,
 				active_status_boo,
 				createdAt,
-				createdBy
+				createdBy,
+				updatedAt
 			});
 			
 			if(data){
