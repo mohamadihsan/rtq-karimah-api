@@ -8,7 +8,7 @@ INSERT INTO master.t_location
 VALUES(1, 1, 'Rumah Irfan', 'Indonesia', 'Bandung', 'Ujung Berung Rumah Irfan', -6.9118013, 107.7019481, true, '2020-04-06 22:18:04.874', 0, '2020-04-06 22:18:04.000', 0, NULL, NULL);
 INSERT INTO master.t_location
 (location_id, company_id, location_name_var, country_name_var, city_name_var, address_text, longitude, latitude, active_status_boo, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by)
-VALUES(2, 1, 'RTQ Karimah', 'Indonesia', 'Bogor', 'Komplek Pesona Citayam Blok B 11 A no.12, Susukan, Kec. Bojong Gede, Bogor, Jawa Barat 16920', -6.460605, 106.790792, true, '2020-04-06 22:18:04.874', 0, '2020-04-06 22:18:04.000', 0, NULL, NULL);
+VALUES(2, 1, 'RTQ Karimah', 'Indonesia', 'Bogor', 'Komplek Pesona Citayam Blok B 11 A no.12, Susukan, Kec. Bojong Gede, Bogor, Jawa Barat 16920', -6.285147, 106.851769, true, '2020-04-06 22:18:04.874', 0, '2020-04-06 22:18:04.000', 0, NULL, NULL);
 
 
 INSERT INTO public.t_gender

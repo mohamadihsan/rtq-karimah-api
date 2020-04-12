@@ -162,7 +162,7 @@ const newAttendanceList = async(req, res) => {
 			return res.status(200).json({ code: 1, message: 'Invalid Parameter Request', errorForDevelopement: errors.array(), data: {} });
 		}
 		
-		if (attendance_type_id === "0") {
+		if (attendance_type_id === 0) {
 		
 			// success create new data (absen masuk)
 			const data = await models.AttendanceList.create({
