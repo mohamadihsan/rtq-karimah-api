@@ -13,5 +13,6 @@ const router = Router();
 
 // login
 router.post('/auth/login', auth.login);
+router.post('/auth/login-im', auth.loginIM);
 
 module.exports = router;

@@ -107,7 +107,51 @@ const login = async (req, res) => {
 	}
 };
 
+
+const loginIM = (req, res) => {
+
+    try {
+
+        let key_terminal_var = req.body.key_terminal_var
+        let terminal_code_var = req.body.terminal_code_var
+        let ip_address_var = req.body.ip_address_var
+        let mac_address_var = req.body.mac_address_var
+        let username_var = req.body.username_var
+        let password_var = req.body.password_var
+
+        let loginStatus = false
+        if (key_terminal_var === "im" && terminal_code_var === "020107" && ip_address_var === "192.168.1.9" && mac_address_var === "00-F4-8D-B9-8A-7D"){
+
+            if (username_var === "admin" && password_var === "admin") {
+
+                return res.status(200).send({ 
+                    code: 0, 
+                    message: "Account has been verified!", 
+                    data: {
+                        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lX3ZhciI6ImlyZmFuIiwidXNlcl9ncm91cF9pZCI6MiwiZW1haWxfdmFyIjoiaXJmYW5yYW5nZ2ExNkB5YWhvby5jb20iLCJpYXQiOjE1ODY2NzUzMTEsImV4cCI6MTU4NzI4MDExMX0.4GVmcVzzUNU14d0x0KXwcNtJj2DDvevJFo9IeoXrumQ" 
+                    } 
+                });
+                
+            }
+            
+            return res.status(200).send({ code: 1, message: "Please check your account!", data: {} });
+
+        } else{
+            
+            return res.status(200).send({ code: 1, message: "Device not register!", data: {} });
+
+        }
+
+        
+    } catch (error) {
+		// error message
+		return res.status(200).send({ code: 1, message: `${error.message}`, data: {} });        
+    }
+
+}
+
 // export
 module.exports = {
-    login
+    login,
+    loginIM
 };
