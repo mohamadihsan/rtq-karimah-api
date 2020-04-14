@@ -16,12 +16,15 @@ const path          = require('path');
 const rfs           = require('rotating-file-stream'); // combined log file per day in /log
 
 // import route Mobile
-const authRoutesMobile              = require('./routes/mobile/auth');
-const authRoutesMobileTransaction   = require('./routes/mobile/transaction');
+const authRoutesMobile          = require('./routes/mobile/auth');
+const routesMobileTransaction   = require('./routes/mobile/transaction');
 
-// import route
+// import route Web
+const authWebRoutes             = require('./routes/web/auth');
+const routesWebTransaction      = require('./routes/web/transaction');
+
+// import route Global
 const authIndex             = require('./routes/');
-const authRoutes            = require('./routes/auth');
 const roleManagementRoutes  = require('./routes/role-management');
 
 const app = express();
@@ -64,11 +67,14 @@ app.use(morgan('combined'));
 
 // Route API Mobile
 app.use('/api/v1/m/', authRoutesMobile);
-app.use('/api/v1/m/', authRoutesMobileTransaction);
+app.use('/api/v1/m/', routesMobileTransaction);
+
+// Route API Web
+app.use('/api/v1/', authWebRoutes);
+app.use('/api/v1/', routesWebTransaction);
 
 // Route API
 app.use('/', authIndex);
-app.use('/api/v1/', authRoutes);
 app.use('/api/v1/', roleManagementRoutes);
 
 // Running Server on Port

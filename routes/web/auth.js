@@ -8,7 +8,7 @@
 
 const { Router } = require('express');
 // import middleware
-const auth = require('../app/middlewares/authenticate');
+const auth = require('../../app/middlewares/authenticate');
 const router = Router();
 
 // login
